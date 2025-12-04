@@ -5,7 +5,7 @@ Topik: Data Pasien
 2. Ringo Noer Junaedy (103042400012)  
   
 Struktur Folder:  
-project_pasien/  
+TUGAS_BESAR_KELOMPOK_3/  
 ├── penyakit.h  
 ├── penyakit.cpp  
 ├── pasien.h  
