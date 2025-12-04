@@ -12,5 +12,28 @@ struct dataPenyakit {
     int tingkatBahaya;
 };
 
+struct elmPenyakit {
+    dataPenyakit info;
+    elmPenyakit* next;
+    elmPenyakit* prev;
+    struct elmRelasi* firstRelasi;
+};
+
+struct ListPenyakit {
+    elmPenyakit* first;
+    elmPenyakit* last;
+};
+
+// Primitif DLL
+void createListPenyakit(ListPenyakit &L);
+bool isEmptyPenyakit(ListPenyakit L);
+elmPenyakit* createElmPenyakit(dataPenyakit x);
+void insertFirstPenyakit(ListPenyakit &L, elmPenyakit* p);
+void insertLastPenyakit(ListPenyakit &L, elmPenyakit* p);
+void deleteFirstPenyakit(ListPenyakit &L, elmPenyakit* p);
+void deleteLastPenyakit(ListPenyakit &L, elmPenyakit* p);
+elmPenyakit* searchPenyakit(ListPenyakit L, string kode);
+void printInfoPenyakit(ListPenyakit L);
+
 
 #endif // PENYAKIT_H_INCLUDED
