@@ -1,12 +1,12 @@
 // pasien.cpp
-#include "pasien.h"
+#include "Pasien.h"
 
 void createListPasien(ListPasien &L) {
     L.first = nullptr;
 }
 
 bool isEmptyPasien(ListPasien L) {
-    return (L.first == nullptr)
+    return (L.first == nullptr);
 }
 
 elmPasien* createElmPasien(dataPasien x) {
@@ -34,7 +34,7 @@ void insertLastPasien(ListPasien &L, elmPasien* p) {
         while (q->next != nullptr) {
             q = q->next;
         }
-        q->next = p
+        q->next = p;
     }
 }
 
@@ -56,7 +56,7 @@ void deleteLastPasien(ListPasien &L, elmPasien* &p) {
         L.first = nullptr;
     } else {
         elmPasien* q = L.first;
-        while (q->next != nullptr) {
+        while (q->next->next != nullptr) {
             q = q->next;
         }
         p = q->next;
@@ -65,14 +65,14 @@ void deleteLastPasien(ListPasien &L, elmPasien* &p) {
 }
 
 elmPasien* searchPasien(ListPasien L, string kode) {
-    elmPasien*p = L.first;
+    elmPasien* p = L.first;
     while (p != nullptr) {
         if (p->info.kode == kode) {
             return p;
         }
         p = p->next;
     }
-    return nullptr
+    return nullptr;
 }
 
 void printInfoPasien(ListPasien L) {
@@ -82,11 +82,11 @@ void printInfoPasien(ListPasien L) {
         cout << "List kosong" << endl;
         return;
     }
-    while (p != nullptr){
+    while (p != nullptr) {
         cout << "Kode: " << p->info.kode
              << ", Nama: " << p->info.name
              << ", Umur: " << p->info.umur
              << ", Alamat: " << p->info.alamat << endl;
-        p = p->next
+        p = p->next;
     }
 }

@@ -33,6 +33,8 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="pasien.cpp" />
+		<Unit filename="pasien.h" />
 		<Unit filename="penyakit.cpp" />
 		<Unit filename="penyakit.h" />
 		<Extensions />
