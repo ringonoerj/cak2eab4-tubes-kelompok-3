@@ -5,11 +5,11 @@ Topik: Data Pasien
 2. Ringo Noer Junaedy (103042400012)  
   
 Struktur Folder:  
-project_pasien/
-├── penyakit.h
-├── penyakit.cpp
-├── pasien.h
-├── pasien.cpp
-├── relasi.h
-├── relasi.cpp
-└── main.cpp
+project_pasien/  
+├── penyakit.h  
+├── penyakit.cpp  
+├── pasien.h  
+├── pasien.cpp  
+├── relasi.h  
+├── relasi.cpp  
+└── main.cpp  
