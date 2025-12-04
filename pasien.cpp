@@ -84,7 +84,7 @@ void printInfoPasien(ListPasien L) {
     }
     while (p != nullptr) {
         cout << "Kode: " << p->info.kode
-             << ", Nama: " << p->info.name
+             << ", Nama: " << p->info.nama
              << ", Umur: " << p->info.umur
              << ", Alamat: " << p->info.alamat << endl;
         p = p->next;

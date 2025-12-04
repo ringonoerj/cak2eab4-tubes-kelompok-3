@@ -37,6 +37,8 @@
 		<Unit filename="pasien.h" />
 		<Unit filename="penyakit.cpp" />
 		<Unit filename="penyakit.h" />
+		<Unit filename="relasi.cpp" />
+		<Unit filename="relasi.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

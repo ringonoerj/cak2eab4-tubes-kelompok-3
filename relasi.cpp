@@ -81,3 +81,102 @@ void showAllRelations(ListPenyakit LP, ListPasien LA) {
         p = p->next;
     }
 }
+
+void disconnectPenyakitPasien(elmPenyakit* p, elmPasien* a) {
+    // Hapus relasi dari sisi penyakit
+    elmRelasi* r = p->firstRelasi;
+    elmRelasi* prev = NULL;
+
+    while (r != NULL) {
+        if (r->child == a) {
+            // Hapus dari linked list penyakit
+            if (prev == NULL) {
+                p->firstRelasi = r->next;
+            } else {
+                prev->next = r->next;
+            }
+
+            // Hapus dari sisi pasien
+            elmRelasi* r2 = a->firstRelasi;
+            elmRelasi* prev2 = NULL;
+            while (r2 != NULL) {
+                if (r2->parent == p) {
+                    if (prev2 == NULL) {
+                        a->firstRelasi = r2->next2;
+                    } else {
+                        prev2->next2 = r2->next2;
+                    }
+                    delete r2;
+                    break;
+                }
+                prev2 = r2;
+                r2 = r2->next2;
+            }
+
+            delete r;
+            return;
+        }
+        prev = r;
+        r = r->next;
+    }
+}
+
+void deleteRelasiByPenyakit(elmPenyakit* p) {
+    elmRelasi* r = p->firstRelasi;
+    while (r != NULL) {
+        elmRelasi* temp = r;
+        r = r->next;
+
+        // Hapus dari sisi pasien
+        elmPasien* a = temp->child;
+        elmRelasi* r2 = a->firstRelasi;
+        elmRelasi* prev2 = NULL;
+
+        while (r2 != NULL) {
+            if (r2->parent == p) {
+                if (prev2 == NULL) {
+                    a->firstRelasi = r2->next2;
+                } else {
+                    prev2->next2 = r2->next2;
+                }
+                delete r2;
+                break;
+            }
+            prev2 = r2;
+            r2 = r2->next2;
+        }
+
+        delete temp;
+    }
+    p->firstRelasi = NULL;
+}
+
+void deleteRelasiByPasien(elmPasien* a) {
+    elmRelasi* r = a->firstRelasi;
+    while (r != NULL) {
+        elmRelasi* temp = r;
+        r = r->next2;
+
+        // Hapus dari sisi penyakit
+        elmPenyakit* p = temp->parent;
+        elmRelasi* r2 = p->firstRelasi;
+        elmRelasi* prev2 = NULL;
+
+        while (r2 != NULL) {
+            if (r2->child == a) {
+                if (prev2 == NULL) {
+                    p->firstRelasi = r2->next;
+                } else {
+                    prev2->next = r2->next;
+                }
+                delete r2;
+                break;
+            }
+            prev2 = r2;
+            r2 = r2->next;
+        }
+
+        delete temp;
+    }
+    a->firstRelasi = NULL;
+}

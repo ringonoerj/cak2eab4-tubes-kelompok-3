@@ -88,15 +88,16 @@ void hapusPenyakit() {
     cin >> kode;
 
     elmPenyakit* p = searchPenyakit(LP, kode);
-    if (p != nullptr) {
-        // Aturan: Parent delete LAST
-        elmPenyakit* temp;
+    if (p != NULL) {
+        // Cek apakah ini elemen terakhir (sesuai aturan: delete LAST)
         if (LP.last == p) {
-            deleteLastPenyakit(LP, temp);
-            deleteRelasiByPenyakit(p);
-            cout << "Penyakit dihapus!" << endl;
+            elmPenyakit* temp;
+            deleteRelasiByPenyakit(p);  // Hapus semua relasinya
+            deleteLastPenyakit(LP, temp);  // Hapus penyakitnya
+            cout << "Penyakit berhasil dihapus!" << endl;
         } else {
-            cout << "Hanya bisa menghapus penyakit terakhir!" << endl;
+            cout << "Hanya bisa menghapus penyakit terakhir (Delete Last)!" << endl;
+            cout << "Penyakit terakhir adalah: " << LP.last->info.kode << endl;
         }
     } else {
         cout << "Penyakit tidak ditemukan!" << endl;
@@ -110,18 +111,73 @@ void hapusPasien() {
     cin >> kode;
 
     elmPasien* a = searchPasien(LA, kode);
-    if (a != nullptr) {
-        // Aturan: Child delete FIRST
-        elmPasien* temp;
+    if (a != NULL) {
+        // Cek apakah ini elemen pertama (sesuai aturan: delete FIRST)
         if (LA.first == a) {
-            deleteFirstPasien(LA, temp);
-            deleteRelasiByPasien(a);
-            cout << "Pasien dihapus!" << endl;
+            elmPasien* temp;
+            deleteRelasiByPasien(a);  // Hapus semua relasinya
+            deleteFirstPasien(LA, temp);  // Hapus pasiennya
+            cout << "Pasien berhasil dihapus!" << endl;
         } else {
-            cout << "Hanya bisa menghapus pasien pertama!" << endl;
+            cout << "Hanya bisa menghapus pasien pertama (Delete First)!" << endl;
+            cout << "Pasien pertama adalah: " << LA.first->info.kode << endl;
         }
     } else {
         cout << "Pasien tidak ditemukan!" << endl;
+    }
+}
+
+void top5Penyakit() {
+    cout << "\n=== TOP 5 PENYAKIT PALING BANYAK ===" << endl;
+
+    // Array untuk menyimpan penyakit dan jumlah pasiennya
+    const int MAX = 100;
+    elmPenyakit* penyakitArr[MAX];
+    int countArr[MAX];
+    int n = 0;
+
+    // Hitung jumlah pasien per penyakit
+    elmPenyakit* p = LP.first;
+    while (p != NULL && n < MAX) {
+        penyakitArr[n] = p;
+        countArr[n] = countPasienInPenyakit(p);
+        n++;
+        p = p->next;
+    }
+
+    if (n == 0) {
+        cout << "Tidak ada data penyakit" << endl;
+        return;
+    }
+
+    // Bubble sort sederhana (descending)
+    for (int i = 0; i < n-1; i++) {
+        for (int j = 0; j < n-i-1; j++) {
+            if (countArr[j] < countArr[j+1]) {
+                // Tukar count
+                int tempCount = countArr[j];
+                countArr[j] = countArr[j+1];
+                countArr[j+1] = tempCount;
+
+                // Tukar pointer penyakit
+                elmPenyakit* tempP = penyakitArr[j];
+                penyakitArr[j] = penyakitArr[j+1];
+                penyakitArr[j+1] = tempP;
+            }
+        }
+    }
+
+    // Tampilkan maksimal 5
+    int limit = (n < 5) ? n : 5;
+    for (int i = 0; i < limit; i++) {
+        cout << i+1 << ". " << penyakitArr[i]->info.nama
+             << " (" << countArr[i] << " pasien)" << endl;
+        cout << "   Kode: " << penyakitArr[i]->info.kode
+             << ", Kategori: " << penyakitArr[i]->info.kategori << endl;
+    }
+
+    if (n > 5) {
+        cout << "\n... dan " << (n - 5) << " penyakit lainnya" << endl;
     }
 }
 
@@ -138,6 +194,7 @@ void showMenu() {
     cout << "9. Hapus Pasien (Delete First)" << endl;
     cout << "10. Hitung Jumlah Pasien dari Penyakit" << endl;
     cout << "11. Tampilkan Semua Relasi" << endl;
+    cout << "12. Top 5 Penyakit Paling Banyak" << endl;  // TAMBAHAN
     cout << "0. Keluar" << endl;
     cout << "Pilihan: ";
 }
@@ -221,6 +278,7 @@ int main() {
                 break;
             }
             case 11: showAllRelations(LP, LA); break;
+            case 12: top5Penyakit(); break;
             case 0: cout << "Keluar..." << endl; break;
             default: cout << "Pilihan tidak valid!" << endl;
         }

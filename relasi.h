@@ -26,4 +26,3 @@ void deleteRelasiByPasien(elmPasien* a);
 void showAllRelations(ListPenyakit LP, ListPasien LA);
 
 #endif
-

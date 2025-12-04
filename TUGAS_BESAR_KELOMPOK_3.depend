@@ -1,4 +1,27 @@
 # depslib dependency file v1.0
-1743445502 source:h:\my drive\ringo\telu\smt ganjil iii 2025-2026\cak2eab4 - struktur data - if-48-02pjj\praktikum\project\tugas_besar_kelompok_3\main.cpp
+1764832706 source:h:\my drive\ringo\telu\smt ganjil iii 2025-2026\cak2eab4 - struktur data - if-48-02pjj\praktikum\project\tugas_besar_kelompok_3\main.cpp
 	<iostream>
+	"penyakit.h"
+	"pasien.h"
+	"relasi.h"
+
+1764833163 source:h:\my drive\ringo\telu\smt ganjil iii 2025-2026\cak2eab4 - struktur data - if-48-02pjj\praktikum\project\tugas_besar_kelompok_3\pasien.cpp
+	"Pasien.h"
+
+1764834076 h:\my drive\ringo\telu\smt ganjil iii 2025-2026\cak2eab4 - struktur data - if-48-02pjj\praktikum\project\tugas_besar_kelompok_3\pasien.h
+	<iostream>
+
+1764833698 h:\my drive\ringo\telu\smt ganjil iii 2025-2026\cak2eab4 - struktur data - if-48-02pjj\praktikum\project\tugas_besar_kelompok_3\penyakit.h
+	<iostream>
+
+1764833799 h:\my drive\ringo\telu\smt ganjil iii 2025-2026\cak2eab4 - struktur data - if-48-02pjj\praktikum\project\tugas_besar_kelompok_3\relasi.h
+	<iostream>
+	"penyakit.h"
+	"pasien.h"
+
+1764834346 source:h:\my drive\ringo\telu\smt ganjil iii 2025-2026\cak2eab4 - struktur data - if-48-02pjj\praktikum\project\tugas_besar_kelompok_3\relasi.cpp
+	"relasi.h"
+
+1764833208 source:h:\my drive\ringo\telu\smt ganjil iii 2025-2026\cak2eab4 - struktur data - if-48-02pjj\praktikum\project\tugas_besar_kelompok_3\penyakit.cpp
+	"penyakit.h"
 

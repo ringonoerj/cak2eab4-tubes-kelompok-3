@@ -1,4 +1,4 @@
-// Header File untuk Pasien (Child - DLL)
+// Header File untuk Pasien (Child - SLL)
 #ifndef PASIEN_H_INCLUDED
 #define PASIEN_H_INCLUDED
 
@@ -7,7 +7,7 @@ using namespace std;
 
 struct dataPasien {
     string kode;
-    string name;
+    string nama;
     int umur;
     string alamat;
 };

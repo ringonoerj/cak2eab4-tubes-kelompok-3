@@ -86,7 +86,7 @@ void printInfoPenyakit(ListPenyakit L) {
     cout << "\n=== DAFTAR PENYAKIT ===" << endl;
     if (p == nullptr) {
         cout << "List kosong" << endl;
-        return
+        return;
     }
     while (p != nullptr) {
         cout << "Kode: " << p->info.kode
